@@ -1,0 +1,30 @@
+*{
+    font-size: 30px;
+}
+
+.outer{
+    margin: 20px;
+}
+
+.btn{
+    font-size: 20px;
+    border: 3px solid black;
+    margin: 10px;
+    cursor: pointer;
+}
+
+#clock{
+    background: burlywood;
+padding: 20px;
+position: relative;
+top: 100px;
+display: block;
+font-size: 25px;
+border: 3px solid black;
+text-align: center;
+font-weight: 600;
+}
+
+.child{
+    font-size: 30px;
+}
