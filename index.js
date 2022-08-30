@@ -559,4 +559,32 @@ let ul = document.querySelector("ul.ul");
 ul.appendChild(elee); 
 console.log(ul);
 
+// Replace an element
 
+let ele2 = document.createElement('h3');
+ele2.id ="elem2";
+ele2.className = "elem2";
+let tnode = document.createTextNode("this is created by node elem2");
+ele2.appendChild(tnode);
+elee.replaceWith(ele2);
+
+// to replace child 
+let ul2 = document.getElementById('ul2');
+ul2.replaceChild(elee,document.getElementById("fui"));
+// new element phle and old element baad mai 
+
+
+// to remove child 
+
+ul2.removeChild(document.getElementById("lui"));
+
+// to add , check , remove , set something-------- 
+let pr = ele2.getAttribute('class');
+ pr = ele2.hasAttribute('class');
+ ele2.removeAttribute("id");
+ ele2.setAttribute("title","title")
+console.log(ele2,pr);
+
+
+
+// setattribute and appendchild and createtextnode  
