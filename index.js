@@ -491,7 +491,7 @@ console.log(sele[0].getElementsByClassName("child"));
 Array.from(sele).forEach(element => {
   element.style.color = "blue";
   console.log(element);
-});
+})
 
 //  or 
 
@@ -584,6 +584,77 @@ let pr = ele2.getAttribute('class');
  ele2.removeAttribute("id");
  ele2.setAttribute("title","title")
 console.log(ele2,pr);
+
+
+
+// Events--------
+
+// to addEvent-------------
+
+document.getElementById("heading").addEventListener
+("click",function(){
+  console.log("You have clicked this and addEvent method has fired");
+  location.href = "//google.com" 
+});
+
+// yeh to print baki sab , most imp. to get target of click
+document.getElementById("heading2").addEventListener
+("click",function(e){
+  console.log(e)
+});
+
+// Manuplate target
+document.getElementById("heading3").addEventListener
+("click",function(e){
+  let var1 = e.target; // declate inside only and not outside
+   var1 = e.target.className;
+   var1 = e.target.id;
+   var1 = e.target.classList; // to iterate by making it an Array
+   var1 = Array.from(e.target.classList); // now can apply any Array method
+  console.log(var1);
+});
+
+// Event list 
+// click , mouseover, mouseleave,dbclick, mousemove  etc. ----------
+
+document.querySelector(".add").addEventListener("mouseenter",fun3);
+
+function fun3(){
+  console.log("You have made a good mistake");
+}
+
+// to make Games---------
+document.querySelector(".body").addEventListener("click",fun4);
+
+function fun4(e){
+  console.log(e.offsetX , e.offsetY);
+  document.body.style.backgroundColor= `rgb(${e.offsetX}, ${e.offsetY},54)`;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
