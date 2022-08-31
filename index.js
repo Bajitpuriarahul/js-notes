@@ -631,31 +631,157 @@ function fun4(e){
   document.body.style.backgroundColor= `rgb(${e.offsetX}, ${e.offsetY},54)`;
 }
 
+console.clear();
+
+
+// Local Storage
+
+// Set local Storage item
+localStorage.setItem("Name", "Rahul");
+localStorage.setItem("Name2", "Goyal");
+
+// Get localStorage item
+let name4 = localStorage.getItem("Name2");
+console.log(name4);
+
+// to clear entire localStorage
+// localStorage.clear(); 
+
+// to remove one item from localStorge
+localStorage.removeItem('Name');
+
+// You cannot add Arary this way 
+// to overcome this , we have
+
+let impArray = ['Roti','Sabzi','Doodh'];
+localStorage.setItem('Array', impArray); 
+localStorage.setItem('Array', JSON.stringify(impArray)); 
+  // no Quotes when writing impArray , also it will save this by converting this into String instead of an Array
+
+
+let cons = localStorage.getItem("Array");
+console.log(cons); // yeh abhi bhi string show krega jo Array ke trh dikhegi , so use JSON.parse
+ cons = JSON.parse(localStorage.getItem("Array"));
+ console.log(cons);
+
+
+ // SessionStorage
+ // Almost same
+
+ sessionStorage.setItem('Names','Rahul');
+ sessionStorage.setItem('Name5', 'Rohan');
+ sessionStorage.setItem('name9',JSON.stringify(impArray));
+ sessionStorage.clear();
+
+console.clear();
+
+
+// This . object 
+
+// Referes to global object  
+console.log(this);
+
+// this also referes to global object
+function fun4(){
+  console.log(this);
+}
+fun4();
+
+console.clear();
+
+
+let obj6 = {
+  name9 : "Rahul",
+  class : 12 ,
+  fun : function(){
+    console.log(this); // pura object aajayega
+    console.log(`i am ${obj6.name9}`)
+    // OR
+    console.log(`I am ${this.name9}`)
+  }
+}
+
+console.log(obj6.fun()); // OR 
+obj6.fun(); 
 
 
 
 
+console.clear();
 
 
+// Object oriented language-------------
 
 
+// Object Literals for creating Objects
+let car = {
+  name :"Maruti",
+  TopSpeed : 208,
+  run : function (){
+    console.log("Car is running")
+  }
+}
+
+console.log(car); // Object pura print kr dega
+car.run();
+
+console.clear();
+
+// Some example of constructure - new Date();
+// Object Constructor
+
+function GeneralCar(GivenName,GivenSpeed){
+  this.name = GivenName;
+  this.TopSpeed = GivenSpeed;
+  this.run = function(){
+    console.log(`${this.name} is running`);
+  }
+  this.analyze = function(){
+    console.log(`This car is slower by ${200-this.TopSpeed} than Mercedes`)
+}
+}
+car1 = new GeneralCar("Nissan", 180)
+console.log(car1);
+console.log(car1.run()); // or niche wala
+car1.run();
+
+car2 = new GeneralCar("Maruti alto",100)
+car2.run();
+console.log(car2);
+
+car2.analyze();
+console.log(car2);
+car2.run();
+
+console.clear();
+
+// Object prototypes ,   Obeject has Object.prototype
+
+let obj0 = {
+  name : "Rahul",
+  Adress : "Mars"
+}
+// console.log(obj0);
+
+function obj11(GivenName){
+  this.blah = GivenName
+}
+let obj10 = new obj11("Rahul")
+console.log(obj10);               // OR 
+console.log(new obj11("Rahul"));  
+
+// Add something into prototype
 
 
+obj11.prototype.getNames = function(){
+  return this.blah;
+}
+console.log(obj10)
+
+console.log(obj10.getNames());
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+// prototype of objects made with constructures should only  be changed and not objects made with Object Literals , vrna Globally prototype change ho jana hai -----------
 
 
 // setattribute and appendchild and createtextnode  
