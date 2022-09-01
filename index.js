@@ -785,3 +785,186 @@ console.log(obj10.getNames());
 
 
 // setattribute and appendchild and createtextnode  
+
+
+
+
+// ------- Loops --------------
+
+console.clear();
+
+// for loop-------------
+
+let pets = ["Lizard","Dog","Cat"];
+pets[3]="Horse";
+pets["species"] ="Mamals" // OR niche wala 
+// pets.species ="Mamals"
+for(let i=0;i<pets.length;i++){
+  console.log(pets[i]);
+  console.log(pets);
+}
+
+// foreach------------
+
+pets.forEach(i =>{
+  console.log(i);
+})
+
+// for in loop------------------- ( In is for Index)
+// Added Object sirf ismai show hoga -----------
+for(i in pets){
+  console.log(`${i}: ${pets[i]} `);
+  // console.log(pets[i]);
+}
+// console.log(pets);
+
+// for of loop----------------
+
+for (i of pets){
+  console.log(i);
+  console.log(pets[i]); // undefined ayega 
+}
+
+
+
+// Two ways to Manipulate DOM 
+
+/*
+element.style.setAttribute('width','150px');
+OR
+element.style.width = '150px';
+*/
+
+console.clear();
+
+// Prototype inheritance --------------
+// Yeh ES6 se phle use hota tha ab nai, so just understand---
+
+let proto = {
+  slogan : function(){
+    return 'This comapny is the best';
+  },
+  changeName : function(newName){
+    this.name = newName
+  }
+}
+let rahul = Object.create(proto);
+rahul.name = "Rahul";
+rahul.role = "Programmer";
+// rahul.changeName("Rahul2");
+
+// instead of above 4 lines , But niche wala annoying hai 
+
+rahul = Object.create(proto,{
+  name: {value: 'Rahul', writable: true},
+  role: {value: 'Programmer'},
+})
+rahul.changeName('Rahul2');
+// console.log(rahul);
+
+
+// Employee Constructure ---------
+
+function Employeee (name,salary,experience){
+  this.name = name;
+  this.salary = salary;
+  this.experience = experience;
+}
+
+// Slogan 
+Employeee.prototype.slogan = function(){
+return `This company is the best.Regards,${this.name}`;
+}
+// Create an object from this constructor now 
+Rahul = new Employeee('Rahul',35000,87);
+console.log(Rahul.slogan());
+
+// Programmer
+
+function Programmer(name,salary,experience,Language){
+  Employeee.call(this,name,salary,experience);
+  this.language = Language;
+}
+
+// Inherit the prototype
+Programmer.prototype = Object.create(Employeee.prototype);
+
+// Manually set the constructor
+Programmer.prototype.constructor = Programmer;
+let rohan = new Programmer("Rohan",2,0,"JavaScript");
+console.log(rohan);
+console.log(rohan.slogan());// yeh error through krega agar line no. 890 nai likhi tho -----
+
+console.clear();
+// ES6 Classes and Inheritance -----------------
+
+
+class Employess {
+  constructor(Givenname,Givenexperience,Givendivision){
+    this.name = Givenname;
+    this.experience = Givenexperience;
+    this.division = Givendivision;
+  }
+  slogan(){
+    return `I am ${this.name} and this company is the best`;
+  }
+  joiningYear(){
+return 2020-this.experience;
+  }
+  // niche wala static method hai , isko hm bina class ka object bnaye use kr skte hai , as ismai "This." kuch use nai hua 
+
+  
+  static add(a,b){
+    return a+b;
+  }
+}
+
+// iss note ka example niche diya hua hai as Example no.1 krke
+//  Note , slogan/joiningYear and yh sb ko Templates khte hai 
+// Inheritence ka mtlb ek Template se dusri Template bna lena  , like merko ek new class bnani hai "programmer ", tho us class mai "Employess" class ke sare templates hoge .
+
+
+
+rahul = new Employess("harry",78,899)
+console.log(rahul.slogan());
+manish = new Employess("Manish",200,200);
+console.log(manish);
+console.log(manish.joiningYear());
+
+console.log(Employess.add(34,5)); // ismai  new Element ka name nai likhna pda 
+
+
+function clss(name,salary,division){
+  console.log(`name: ${name},salary:${salary},division:${division}`)
+};
+clss('rahul',300,4004);
+
+// function se bnane pr Object nai bnega , so the name Object constructor ------- 
+
+
+
+// Example no.1 --------------------
+
+class Programmerr extends Employess{
+  constructor(Givenname,Givenexperience,Givendivision,language,github){
+    super(Givenname,Givenexperience,Givendivision);
+    this.language = language;
+    this.github = github
+  }
+ favlang(){
+  if (this.language=="python"){
+return "python";
+  }
+  else{
+    return "JavaScript";
+  }
+}
+  static multiply(a,b){
+    return a*b;
+  }
+}
+
+rhona = new Programmerr ("rohan",3,"lays","rhoanasnfa");
+console.log(rhona);
+console.log(rhona.favlang());
+console.log(Programmerr.multiply(3,4));
