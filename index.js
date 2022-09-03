@@ -968,3 +968,106 @@ rhona = new Programmerr ("rohan",3,"lays","rhoanasnfa");
 console.log(rhona);
 console.log(rhona.favlang());
 console.log(Programmerr.multiply(3,4));
+
+
+// Object inheritance , constructor and ES6 
+
+// Jrurt of Object constructor --- to get multiple objects with some same properties and methods 
+
+function Student(First,Name,clss){
+  this.FirstName = First;
+  this.lastName = Name;
+  this.clssName = clss;
+  // Add function
+  this.clss = function(){
+    return this.clssName;
+  }
+};
+
+let student1 = new Student('Rahul','Goyal',12);
+let student2 = new Student("Shweta","Goyal",12);
+console.log(student1,student2);
+
+// Now to add some properties into object created and not in constructor
+
+// Note -- Student.name , to add a protpery diretly to constructot is incorrect , instead use prototype 
+student2.age = 24;
+student1.name = function(){
+  return this.FirstName +""+this.FirstName;this.lastName;
+}
+
+console.log(student1,student2);
+
+console.clear();
+
+
+// How to add properties and methods into constructors itself instead to add it to objects so created ---------
+
+// to add property 
+Student.prototype.nationality = "Indian"; // added into prototype of object in console
+
+// to add method 
+
+Student.prototype.gender= function(){
+  return this.FirstName;
+}
+console.log(student1,student2);
+console.log(student1.nationality);
+console.log(student1.gender()); // if parentheses is not typed , all the code of function will be shown -------
+
+// an object is an instance of a class , many objects with some same methods and properties 
+
+// instead to use function , we can use class keyword too and properties are assigned inside an constructor() method ----
+
+
+
+// function Student5(){
+
+// }
+// instead 
+
+class Student5{
+  // jb app class ke sath kaam krte ho and object ko create krte ho tho constructor function apne app call hota hai agar call na kro tho 
+  constructor(namee,age,clss){
+this.Name = namee;
+this.age = age;
+this.class = clss;
+  }
+  // biodata() ek instance method hai and extend keyword ko use krke dusri class instance method ko use kr skti hai but agat method static ho tho nai kr skti 
+  // method ko static bnane ke liye 
+  // static biodata() ese likh do 
+  biodata(){
+    console.log(`Hi i am Rahul Goyal ${this.Name} `)
+  };
+};
+
+let obj9 = new Student5('rahul',23,12);
+console.log(obj9);
+obj9.biodata();
+
+class Player extends Student5{
+// No new property or method is added , so no need to write super 
+}
+
+// yeh niche wala abhi bhi work krega kyuki isne Student5 class ke properties and methods inherite kr liya hai 
+
+let obj01 = new Player("rahul",88,99);
+console.log(obj01);
+
+class Machine extends Student5{
+constructor(namee,age,clss,typee) { // properties jo new hai and inherit krni hai sb idhr likho 
+  super(namee,age,clss); // jo property inherit krni hai wo idhr likho
+this.tyoe = typee;
+}
+biomech(){
+  console.log(`I am a robot from ${this.tyoe}`)
+}
+mech(){
+  console.log(`${super.biodata()}`); // after super not () but . use dot
+}
+}
+let boy = new Machine("rahul",44,55,"robot"); // must provide input for other properties 
+console.log(boy);
+
+// agar function kbhi call kro and undefined aye tho function mai console.log ko hta kr return keyword likh do -------
+// constructor mai hoisting nai lgti , mtlb funciton define krne se phle app function ko call nai kr skte -------
