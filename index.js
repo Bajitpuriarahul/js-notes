@@ -830,7 +830,12 @@ for (i of pets){
 // Two ways to Manipulate DOM 
 
 /*
-element.style.setAttribute('width','150px');
+element.style.setAttribute('width','150px'); 
+element.setAttribute("style","width : 150px");
+element.setAttribut("class","classname"); or 'id' instead of 'class' 
+
+OR
+element.setAttribute("style",'border : 2px solid red; width : 20px; margin :24px;')
 OR
 element.style.width = '150px';
 */
