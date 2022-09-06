@@ -162,7 +162,7 @@ function enrollStudent(newname){
         setTimeout(function(){
             students.push(newname);
             console.log("Students have been enrolled");
-            let error = true;
+            let error = false;
             if(!error){
                 resolve();
             }
@@ -194,6 +194,10 @@ let newStudent = {name:"Sunny",subject:"Java"};
 enrollStudent(newStudent ,getStudents).then(getStudents).catch(function(){
     console.log("Some error occured")
 });
+
+
+
+
 
 
 
